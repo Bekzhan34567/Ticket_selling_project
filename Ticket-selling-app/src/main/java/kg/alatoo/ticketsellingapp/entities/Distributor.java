@@ -23,6 +23,6 @@ public class Distributor {
     private String phone;
     private String officialsite;
 
-    @OneToMany(mappedBy = "distributor")
-    Set<Ticket> tickets;
+//    @OneToMany(mappedBy = "distributor")
+//    Set<Ticket> tickets;
 }

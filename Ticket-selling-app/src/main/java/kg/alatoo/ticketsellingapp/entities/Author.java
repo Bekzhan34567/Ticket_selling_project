@@ -25,6 +25,6 @@ public class Author {
     @NotNull
     private String email;
 
-    @ManyToMany(mappedBy = "authors")
-    private List<Ticket> tickets;
+//    @ManyToMany(mappedBy = "authors")
+//    private List<Ticket> tickets;
 }

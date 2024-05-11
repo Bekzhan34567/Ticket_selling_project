@@ -17,5 +17,5 @@ public class DistributorDTO {
     private String phone;
     private String officialsite;
 
-    Set<TicketDTO> tickets;
+//    Set<TicketDTO> tickets;
 }
