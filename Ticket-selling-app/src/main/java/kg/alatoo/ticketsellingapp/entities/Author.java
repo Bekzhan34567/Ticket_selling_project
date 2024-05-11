@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "Event quest")
+@Table(name = "Eventquest")
 
 public class Author {
     @Id

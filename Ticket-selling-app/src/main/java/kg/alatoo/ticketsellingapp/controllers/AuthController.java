@@ -1,11 +1,11 @@
 package kg.alatoo.ticketsellingapp.controllers;
 
 
-import kg.alatoo.ticketsellingapp.dto.*;
 import kg.alatoo.ticketsellingapp.dto.authorization.*;
 import kg.alatoo.ticketsellingapp.entities.RefreshToken;
 import kg.alatoo.ticketsellingapp.services.JwtService;
 import kg.alatoo.ticketsellingapp.services.RefreshTokenService;
+import kg.alatoo.ticketsellingapp.services.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,6 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,7 +25,12 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final RefreshTokenService refreshTokenService;
+    private final UserService userService;
 
+    @PostMapping("/register")
+    public UserDto register(@Validated @RequestBody AuthRegistrationDTO authRegistrationDTO){
+        return userService.register(authRegistrationDTO);
+    }
     @PostMapping("/login")
     public JwtTokenDto AuthenticateAndGetToken(@RequestBody AuthLoginDto authRequestDTO){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequestDTO.getUsername(), authRequestDTO.getPassword()));
